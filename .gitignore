@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.db
+*.sqlite3
+node_modules/
+.idea/
+.vscode/
+*.apk
+dist/
+build/
+*.egg-info/
+.gradle/
+local.properties
