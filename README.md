@@ -1,28 +1,41 @@
 # Table Order System
 
-매장 테이블 오더 시스템. 손님이 태블릿에서 주문하면 POS에서 실시간으로 수신하고 영수증을 자동 출력합니다.
+Design notes for a restaurant ordering system connecting Android tablets, a Windows POS, and a local backend.
 
-## 구성
+**Status: design stage.** This repository contains specifications and screen flows, not an implemented application.
 
-| 컴포넌트 | 플랫폼 | 기술 스택 |
-|----------|--------|-----------|
-| 손님용 앱 | Android 태블릿 | Kotlin (키오스크 모드) |
-| POS/주방 앱 | Windows PC | Python + pywebview |
-| 백엔드 서버 | 가게 내 PC | Python FastAPI + WebSocket |
-| 관리자 페이지 | 웹 브라우저 | 서버 내장 웹 페이지 |
-| 프린트 서버 | POS PC (백그라운드) | Python + python-escpos |
+## Planned workflow
 
-## 문서
+1. Guests browse the menu and submit an order from a table tablet.
+2. The backend sends the order to the POS over WebSocket.
+3. The POS displays the order and requests a kitchen receipt.
+4. Staff manage menus, availability, tables, and order history.
 
-- [시스템 아키텍처](docs/architecture.md)
-- [손님용 앱 화면 플로우](docs/customer-app-flow.md)
-- [POS 앱 화면 플로우](docs/pos-app-flow.md)
-- [기술 스택 및 결정 근거](docs/tech-stack.md)
-- [MVP 기능 명세](docs/mvp-spec.md)
+The initial payment plan records payment details after staff process the payment on an existing terminal. Payment-provider integration is outside the initial scope.
 
-## Status
+## Proposed components
 
-🚧 설계 단계 — 개발 미착수
+| Component | Platform | Technology |
+|---|---|---|
+| Guest app | Android tablet | Kotlin, kiosk mode |
+| POS / kitchen app | Windows | Python, pywebview |
+| Backend | In-store PC | FastAPI, WebSocket |
+| Admin interface | Browser | Server-hosted HTML, CSS, JavaScript |
+| Print service | POS PC | Python, python-escpos |
+
+## Design documents
+
+The detailed planning documents are currently written in Korean.
+
+- [System architecture](docs/architecture.md)
+- [Guest app flow](docs/customer-app-flow.md)
+- [POS app flow](docs/pos-app-flow.md)
+- [Technology choices](docs/tech-stack.md)
+- [MVP scope and priorities](docs/mvp-spec.md)
+
+## Repository scope
+
+This is a personal planning workspace. There is no application build, installation package, or deployment procedure yet.
 
 ## Author
 
